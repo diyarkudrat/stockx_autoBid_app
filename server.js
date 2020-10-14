@@ -1,9 +1,13 @@
 const express = require('express');
 const StockXAPI = require('stockx-api');
+const BodyParser = require('body-parser');
 require('./data/autoBid-db');
 require('dotenv').config();
 
 app = express();
+
+app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({ extend: true }));
 
 cors = require('cors');
 app.use(cors());
