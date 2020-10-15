@@ -28,7 +28,7 @@ export default function Appbar() {
                     <Typography variant="h6" className={classes.title}>
                         AutoBidSX
                     </Typography>
-                    <Button color="inherit">Log In</Button>
+                    <Button color="inherit" href="/login">Log In</Button>
                 </Toolbar>
             </AppBar>
         </div>

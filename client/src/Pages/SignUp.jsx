@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         width: '350px',
-        height: '550px',
+        height: '575px',
         border: '3px solid #32CF7A',
         borderRadius: '30px',
     },
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function LogIn() {
+export default function SignUp() {
     const classes = useStyles();
 
 
@@ -59,9 +59,29 @@ export default function LogIn() {
                     <PersonOutlineIcon style={{ width: '40px', height: '50px' }}/>
                 </Avatar>
                 <Typography component="h1" variant="h5" style={{ marginTop: '10%' }}>
-                    Log In
+                    Sign Up
                 </Typography>
                 <form className={classes.form} noValidate>
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      id="firstName"
+                      label="First Name"
+                      name="firstName"
+                      autoFocus
+                      className={classes.box}
+                    />
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      id="lastName"
+                      label="Last Name"
+                      name="lastName"
+                      autoFocus
+                      className={classes.box}
+                    />
                     <TextField
                       variant="outlined"
                       margin="normal"
@@ -95,9 +115,6 @@ export default function LogIn() {
                     >
                         Log In
                     </Button>
-                    <Link href="/sign-up" style={{ marginLeft: '10%' }}>
-                        Don't have an account? Click here to sign up!
-                    </Link>
                 </form>
             </div>
         </Container>
