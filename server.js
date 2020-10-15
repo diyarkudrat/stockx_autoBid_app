@@ -1,18 +1,33 @@
 const express = require('express');
 const StockXAPI = require('stockx-api');
-const BodyParser = require('body-parser');
-require('./data/autoBid-db');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
+const expressValidator = require('express-validator');
+const jwt = require('jsonwebtoken');
+
+
 require('dotenv').config();
 
 app = express();
 
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extend: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extend: true }));
+app.use(cookieParser());
+app.use(methodOverride('_method'));
+
+app.use(expressValidator());
 
 cors = require('cors');
 app.use(cors());
 
 const stockX = new StockXAPI();
+
+// db
+require('./data/autoBid-db');
+
+// Controllers
+require('./controllers/auth.js')(app);
 
 
 app.get("/", async (req, res) => {
@@ -41,4 +56,8 @@ app.get("/", async (req, res) => {
 
 
 port = process.env.PORT;
-app.listen(port, () => console.log("Backend server listening on port:" + port));
+app.listen(port, () => {
+    console.log(`Backend server listening on localhost:${port}`);
+});
+
+module.exports = app;

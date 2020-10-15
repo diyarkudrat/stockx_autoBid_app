@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { assert } = require('console');
 assert = require('assert');
 
 const url = "mongodb://localhost/autoBid-db";
